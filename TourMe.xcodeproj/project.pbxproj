@@ -10,6 +10,7 @@
 		1539289025E670345139531D /* Pods_TourMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CF2DDD0CF597A069260A755 /* Pods_TourMeTests.framework */; };
 		28E76649877DFCF9BD13418A /* Pods_TourMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4954194283E7328D4C65693 /* Pods_TourMe.framework */; };
 		61E4470323FC4C05936FE8BF /* Pods_TourMeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091D880B67F47A2B8573650B /* Pods_TourMeUITests.framework */; };
+		657C78EA1EE534080093A1ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 657C78E91EE534080093A1ED /* GoogleService-Info.plist */; };
 		881B6E561EE52D2E000334C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B6E551EE52D2E000334C2 /* AppDelegate.swift */; };
 		881B6E581EE52D2E000334C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B6E571EE52D2E000334C2 /* ViewController.swift */; };
 		881B6E5B1EE52D2E000334C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 881B6E591EE52D2E000334C2 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		091D880B67F47A2B8573650B /* Pods_TourMeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourMeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CF2DDD0CF597A069260A755 /* Pods_TourMeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourMeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1E58080F13210D948BD4F4 /* Pods-TourMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-TourMe/Pods-TourMe.release.xcconfig"; sourceTree = "<group>"; };
+		657C78E91EE534080093A1ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		881B6E521EE52D2E000334C2 /* TourMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TourMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		881B6E551EE52D2E000334C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		881B6E571EE52D2E000334C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				881B6E5C1EE52D2E000334C2 /* Assets.xcassets */,
 				881B6E5E1EE52D2E000334C2 /* LaunchScreen.storyboard */,
 				881B6E611EE52D2E000334C2 /* Info.plist */,
+				657C78E91EE534080093A1ED /* GoogleService-Info.plist */,
 			);
 			path = TourMe;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				881B6E601EE52D2E000334C2 /* LaunchScreen.storyboard in Resources */,
+				657C78EA1EE534080093A1ED /* GoogleService-Info.plist in Resources */,
 				881B6E5D1EE52D2E000334C2 /* Assets.xcassets in Resources */,
 				881B6E5B1EE52D2E000334C2 /* Main.storyboard in Resources */,
 			);
@@ -606,7 +610,7 @@
 				DEVELOPMENT_TEAM = K4Z76LM5AD;
 				INFOPLIST_FILE = TourMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.EcaKnowGames.TourMe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.petrovEcanow.TourMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -620,7 +624,7 @@
 				DEVELOPMENT_TEAM = K4Z76LM5AD;
 				INFOPLIST_FILE = TourMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.EcaKnowGames.TourMe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.petrovEcanow.TourMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -707,6 +711,7 @@
 				881B6E7C1EE52D2E000334C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		881B6E7D1EE52D2E000334C2 /* Build configuration list for PBXNativeTarget "TourMeTests" */ = {
 			isa = XCConfigurationList;
@@ -715,6 +720,7 @@
 				881B6E7F1EE52D2E000334C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		881B6E801EE52D2E000334C2 /* Build configuration list for PBXNativeTarget "TourMeUITests" */ = {
 			isa = XCConfigurationList;
@@ -723,6 +729,7 @@
 				881B6E821EE52D2E000334C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

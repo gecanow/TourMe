@@ -36,6 +36,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         // FLT_MAX here simply means no constraint in height
         bioLabel.text = updatedBio
         bioLabel.sizeToFit()
+        bioView.sizeToFit()
         
         //------------------------------------------
         // FINALLY, update the scroll view content

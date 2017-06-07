@@ -89,7 +89,7 @@
             <objects>
                 <navigationController id="MeM-ao-glQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="t0T-A1-PgJ"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RGR-su-ble">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="RGR-su-ble">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -247,7 +247,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l4I-n1-SYH" id="VGz-4W-07e">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -286,7 +286,7 @@
             <objects>
                 <navigationController id="5pZ-um-fw0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chat" id="aoI-KW-IuM"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gIQ-x3-6Wo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gIQ-x3-6Wo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

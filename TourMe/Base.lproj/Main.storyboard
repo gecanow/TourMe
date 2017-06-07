@@ -5,7 +5,11 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+
+
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,28 +25,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6RF-Lf-5vA">
-                                <rect key="frame" x="127" y="400" width="121" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipS-ct-Uib">
-                                <rect key="frame" x="164" y="455" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipS-ct-Uib">
+                                <rect key="frame" x="36" y="407" width="303" height="51"/>
+                                <color key="backgroundColor" red="0.95960814790000004" green="0.67447291440000001" blue="0.19228364980000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="wm7-TS-StS"/>
+                                </constraints>
+                                <state key="normal" title="College">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Segue1" id="b7c-ip-RGp"/>
+                                    <action selector="collegePRessed:" destination="8I5-3p-Icp" eventType="touchUpInside" id="Vx4-eu-vUb"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="tcG-2i-DNr"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="HhJ-kk-Irw">
-                                <rect key="frame" x="25" y="84" width="324" height="172"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOo-89-V1t">
+                                <rect key="frame" x="36" y="477" width="303" height="51"/>
+                                <color key="backgroundColor" red="0.95960814790000004" green="0.67447291440000001" blue="0.19228364980000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="tIs-KI-YjN"/>
+                                </constraints>
+                                <state key="normal" title="High School">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="hsPressed:" destination="8I5-3p-Icp" eventType="touchUpInside" id="bwd-fv-pMW"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="NxI-dF-RJj"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="HhJ-kk-Irw">
+                                <rect key="frame" x="87" y="82" width="200" height="160"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XpR-CT-4RW" firstAttribute="top" secondItem="lOo-89-V1t" secondAttribute="bottom" constant="139" id="0Eh-RN-Iq3"/>
+                            <constraint firstItem="ipS-ct-Uib" firstAttribute="centerX" secondItem="ClR-W0-LUp" secondAttribute="centerX" id="4GD-Ta-0Rk"/>
+                            <constraint firstItem="ipS-ct-Uib" firstAttribute="leading" secondItem="ClR-W0-LUp" secondAttribute="leadingMargin" constant="20" id="ABU-b6-Gra"/>
+                            <constraint firstItem="lOo-89-V1t" firstAttribute="centerX" secondItem="ClR-W0-LUp" secondAttribute="centerX" id="BKH-4q-iz1"/>
+                            <constraint firstItem="HhJ-kk-Irw" firstAttribute="centerX" secondItem="ClR-W0-LUp" secondAttribute="centerX" id="Hu1-Jt-zeA"/>
+                            <constraint firstItem="lOo-89-V1t" firstAttribute="top" secondItem="ipS-ct-Uib" secondAttribute="bottom" constant="19" id="K1c-u4-G6y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ipS-ct-Uib" secondAttribute="trailing" constant="20" id="VgK-W5-kJO"/>
+                            <constraint firstItem="HhJ-kk-Irw" firstAttribute="top" secondItem="KmY-iA-J79" secondAttribute="bottom" constant="62" id="YM1-dq-NBs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lOo-89-V1t" secondAttribute="trailing" constant="20" id="fNU-88-lF2"/>
+                            <constraint firstItem="lOo-89-V1t" firstAttribute="leading" secondItem="ClR-W0-LUp" secondAttribute="leadingMargin" constant="20" id="fWf-8L-n42"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3BO-wy-Q37" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -78,6 +105,7 @@
                     </view>
                     <connections>
                         <outlet property="googleSignButton" destination="U6s-Ja-xKe" id="S4b-bZ-LYq"/>
+                        <outlet property="label1" destination="ekn-bD-tUJ" id="OcC-yP-VXm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -89,7 +117,9 @@
             <objects>
                 <navigationController id="MeM-ao-glQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="t0T-A1-PgJ"/>
+
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="RGR-su-ble">
+
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -101,7 +131,7 @@
         <!--Main Screen View Controller-->
         <scene sceneID="9uu-MZ-f4f">
             <objects>
-                <tabBarController id="hCV-sI-FJI" customClass="MainScreenViewController" customModule="TourMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hCV-sI-FJI" customClass="MainScreenViewController" customModule="TourMe" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="pvs-P3-YiW"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="hZ5-TI-fTd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -247,7 +277,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l4I-n1-SYH" id="VGz-4W-07e">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -335,4 +365,7 @@
     <resources>
         <image name="logo" width="200" height="160"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="tcG-2i-DNr"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -5,9 +5,7 @@ import GoogleSignIn
 import FirebaseAuth
 
 class firstScreen: UIViewController {
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +27,13 @@ class firstScreen: UIViewController {
 
     }
     
+    @IBAction func collegePRessed(_ sender: Any) {
+        UserDefaults.standard.set("College", forKey: "studentType")
+    }
+    
+    @IBAction func hsPressed(_ sender: Any) {
+        UserDefaults.standard.set("HS", forKey: "studentType")
+    }
     
 }
 

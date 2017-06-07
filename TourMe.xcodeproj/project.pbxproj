@@ -21,6 +21,8 @@
 		881B6E601EE52D2E000334C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 881B6E5E1EE52D2E000334C2 /* LaunchScreen.storyboard */; };
 		881B6E6B1EE52D2E000334C2 /* TourMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B6E6A1EE52D2E000334C2 /* TourMeTests.swift */; };
 		881B6E761EE52D2E000334C2 /* TourMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B6E751EE52D2E000334C2 /* TourMeUITests.swift */; };
+		88F5F4551EE87AA9002DFBFB /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F5F4541EE87AA9002DFBFB /* ChatTableViewController.swift */; };
+		88F5F4571EE88229002DFBFB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F5F4561EE88229002DFBFB /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		881B6E711EE52D2E000334C2 /* TourMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TourMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		881B6E751EE52D2E000334C2 /* TourMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourMeUITests.swift; sourceTree = "<group>"; };
 		881B6E771EE52D2E000334C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88F5F4541EE87AA9002DFBFB /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
+		88F5F4561EE88229002DFBFB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8ABF7222BCB7929AF251398B /* Pods-TourMeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourMeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TourMeTests/Pods-TourMeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8AF46B22C9BF6CFC2111E510 /* Pods-TourMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TourMe/Pods-TourMe.debug.xcconfig"; sourceTree = "<group>"; };
 		C4954194283E7328D4C65693 /* Pods_TourMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +141,8 @@
 				881B6E551EE52D2E000334C2 /* AppDelegate.swift */,
 				881B6E571EE52D2E000334C2 /* loginView.swift */,
 				881B6E591EE52D2E000334C2 /* Main.storyboard */,
+				88F5F4561EE88229002DFBFB /* ProfileViewController.swift */,
+				88F5F4541EE87AA9002DFBFB /* ChatTableViewController.swift */,
 				652CCC761EE7C50D0013C188 /* ProfileView.swift */,
 				652CCC721EE783730013C188 /* MainScreenViewController.swift */,
 				652CCC701EE781A70013C188 /* firstScreen.swift */,
@@ -473,7 +479,9 @@
 				652CCC731EE783730013C188 /* MainScreenViewController.swift in Sources */,
 				652CCC771EE7C50D0013C188 /* ProfileView.swift in Sources */,
 				881B6E581EE52D2E000334C2 /* loginView.swift in Sources */,
+				88F5F4571EE88229002DFBFB /* ProfileViewController.swift in Sources */,
 				881B6E561EE52D2E000334C2 /* AppDelegate.swift in Sources */,
+				88F5F4551EE87AA9002DFBFB /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

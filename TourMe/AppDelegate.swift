@@ -10,11 +10,14 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FirebaseAuth
+import FirebaseDatabase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
+    var ref: FIRDatabaseReference!
+    
  
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)
         -> Bool {
@@ -24,6 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
             GIDSignIn.sharedInstance().delegate = self
             
+            self.ref = FIRDatabase.database().reference()
+            
+            let firebaseAuth = FIRAuth.auth()
+            do {
+                try firebaseAuth?.signOut()
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+            GIDSignIn.sharedInstance().signOut()
             
             if FIRAuth.auth()?.currentUser != nil {
                 print("FIREBASE USER EXISTS...")
@@ -72,6 +84,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 return
             }
             print("Succeed")
+            
+            self.ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if snapshot.hasChild("\(user?.uid)"){
+                    
+                    print("true user exists")
+                    
+                }
+                else{
+                    
+                    print("false user doesn't exist")
+                    
+                    self.ref.child("users").child((user?.uid)!).setValue(["studentType": UserDefaults.standard.value(forKey: "studentType")])
+                }
+                
+                
+            })
             
             print("FIREBASE USER EXISTS...")
             print("\(user?.email)")

@@ -7,16 +7,96 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
+import FirebaseAuth
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
+ 
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)
+        -> Bool {
+            // Use Firebase library to configure APIs
+            FIRApp.configure()
+            
+            GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+            GIDSignIn.sharedInstance().delegate = self
+            
+            
+            if FIRAuth.auth()?.currentUser != nil {
+                print("FIREBASE USER EXISTS...")
+                print(FIRAuth.auth()?.currentUser?.uid)
+                print(FIRAuth.auth()?.currentUser?.email)
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "MainTab")
+                self.window?.rootViewController? = initViewController
+                
+            } else {
+                //User Not logged in
+                print("USER DOES NOT EXIST")
+            }
 
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
+            
+            
+            return true
+    }
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
+        -> Bool {
+            return GIDSignIn.sharedInstance().handle(url,
+                                                     sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                     annotation: [:])
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        // ...
+        print("Sign in...")
+        if error != nil {
+            // ...
+            print("\(String(describing: error))")
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        
+        
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            // ...
+            if error != nil {
+                // ...
+                return
+            }
+            print("Succeed")
+            
+            print("FIREBASE USER EXISTS...")
+            print("\(user?.email)")
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "MainTab")
+            self.window?.rootViewController? = initViewController
+        // ...
+        }
+    }
+    
+    
+    
+    func goToFirstScreen()
+    {
+        GIDSignIn.sharedInstance().signOut()
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "firstView")
+        self.window?.rootViewController? = initViewController
+    }
+    
+        
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+        print("Disconnecting...")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

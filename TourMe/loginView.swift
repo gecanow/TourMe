@@ -14,23 +14,73 @@ import FirebaseAuth
 class loginView: UIViewController, GIDSignInUIDelegate {
 
     @IBOutlet weak var label1: UILabel!
-    @IBOutlet weak var googleSignButton: GIDSignInButton!
-
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var enterUni: UITextField!
+    var ref: DatabaseReference!
     
+    
+    
+    var email: String = ""
+    var containsEDU = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         GIDSignIn.sharedInstance().uiDelegate = self
+        ref = Database.database().reference()
         
-        let studentType: String = UserDefaults.standard.value(forKey: "studentType") as! String
-        if(studentType == "HS")
+        let name = Auth.auth().currentUser?.displayName
+        print("\(name!)")
+        topLabel.text = "Hello \(name!)!"
+        
+        email = (Auth.auth().currentUser?.email)!
+
+        print("\(email)")
+        
+        let emailEnd = email.substring(from: email.index(email.endIndex, offsetBy: -4))
+        
+        
+        print("\(emailEnd)")
+        self.containsEDU = emailEnd == ".edu"
+        
+        if(self.containsEDU == true)
         {
-            label1.text = "Hello high schooler. Login in with your Google Account..."
+            label1.text = "I see you have a .EDU email, and are a COLLEGE STUDENT. Please enter your University name:"
+            enterUni.isHidden = false
+        }
+        else
+        {
+            label1.text = "I see you are a HIGH SCHOOLER. Ready to find tours?"
+            enterUni.isHidden = true
+        }
+        
+        
+    }
+    
+    @IBAction func continuePressed(_ sender: Any) {
+        if(self.containsEDU == true)
+        {
+            if(self.enterUni.text != "")
+            {
+                self.ref.child("users").child((Auth.auth().currentUser?.uid)!).setValue(["inCollege": "true"])
+                
+                // get a reference to the app delegate
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.goToMainScreen()
+            }
+            else
+            {
+                //do nothing
+                //alert
+            }
         }
         else{
-            label1.text = "Hello college student. Login in with your .edu Google Account..."
+            self.ref.child("users").child((Auth.auth().currentUser?.uid)!).setValue(["inCollege": "false"])
+            
+            // get a reference to the app delegate
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.goToMainScreen()
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +90,8 @@ class loginView: UIViewController, GIDSignInUIDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-           }
+        
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

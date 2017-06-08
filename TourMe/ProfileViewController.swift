@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileViewController: UIViewController, UIScrollViewDelegate {
     
@@ -24,6 +25,22 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         updateScrollViewContent()
         
         bioLabel.lineBreakMode = .byWordWrapping
+    }
+    
+    func signOut()
+    {
+        // [START signout]
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        // get a reference to the app delegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.goToFirstScreen()
+        // [END signout]
     }
     
     @IBAction func onTappedBioEdit(_ sender: Any) {

@@ -16,31 +16,31 @@ import FirebaseDatabase
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     
  
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)
         -> Bool {
             // Use Firebase library to configure APIs
-            FIRApp.configure()
+            FirebaseApp.configure()
             
-            GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+            GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
             GIDSignIn.sharedInstance().delegate = self
             
-            self.ref = FIRDatabase.database().reference()
+            self.ref = Database.database().reference()
             
-            let firebaseAuth = FIRAuth.auth()
+            let firebaseAuth = Auth.auth()
             do {
-                try firebaseAuth?.signOut()
+                try firebaseAuth.signOut()
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)
             }
-            GIDSignIn.sharedInstance().signOut()
+            GIDSignIn.sharedInstance().signOut() 
             
-            if FIRAuth.auth()?.currentUser != nil {
+            if Auth.auth().currentUser != nil {
                 print("FIREBASE USER EXISTS...")
-                print(FIRAuth.auth()?.currentUser?.uid)
-                print(FIRAuth.auth()?.currentUser?.email)
+                print((Auth.auth().currentUser?.uid)!)
+                print((Auth.auth().currentUser?.email)!)
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "MainTab")
                 self.window?.rootViewController? = initViewController
@@ -59,8 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
         -> Bool {
             return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                                     annotation: [:])
+                            sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                            annotation: [:])
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
@@ -73,11 +73,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
         
         guard let authentication = user.authentication else { return }
-        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
         
         
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+        Auth.auth().signIn(with: credential) { (user, error) in
             // ...
             if error != nil {
                 // ...
@@ -87,26 +87,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
             self.ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
                 
-                if snapshot.hasChild("\(user?.uid)"){
+                if snapshot.hasChild("\((user?.uid)!)"){
                     
                     print("true user exists")
-                    
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "MainTab")
+                    self.window?.rootViewController? = initViewController
                 }
                 else{
                     
-                    print("false user doesn't exist")
-                    
-                    self.ref.child("users").child((user?.uid)!).setValue(["studentType": UserDefaults.standard.value(forKey: "studentType")])
+                        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "loginView")
+                        self.window?.rootViewController? = initViewController
+
                 }
-                
                 
             })
             
             print("FIREBASE USER EXISTS...")
-            print("\(user?.email)")
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "MainTab")
-            self.window?.rootViewController? = initViewController
+            print("\((user?.email)!)")
+            
         // ...
         }
     }
@@ -121,7 +121,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         self.window?.rootViewController? = initViewController
     }
     
-        
+    func goToMainScreen()
+    {
+        GIDSignIn.sharedInstance().signOut()
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let initViewController: UIViewController = storyBoard.instantiateViewController(withIdentifier: "MainTab")
+        self.window?.rootViewController? = initViewController
+    }
+    
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...

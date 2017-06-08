@@ -12,7 +12,9 @@
 		61E4470323FC4C05936FE8BF /* Pods_TourMeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091D880B67F47A2B8573650B /* Pods_TourMeUITests.framework */; };
 		652CCC711EE781A70013C188 /* firstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652CCC701EE781A70013C188 /* firstScreen.swift */; };
 		652CCC731EE783730013C188 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652CCC721EE783730013C188 /* MainScreenViewController.swift */; };
-		652CCC771EE7C50D0013C188 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652CCC761EE7C50D0013C188 /* ProfileView.swift */; };
+		652CCC771EE7C50D0013C188 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652CCC761EE7C50D0013C188 /* HomeView.swift */; };
+		6532BFC91EE9ACD30077A0FD /* HomeScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6532BFC81EE9ACD30077A0FD /* HomeScreenTableViewController.swift */; };
+		6532BFCB1EE9B5F50077A0FD /* HeaderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6532BFCA1EE9B5F50077A0FD /* HeaderObject.swift */; };
 		657C78EA1EE534080093A1ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 657C78E91EE534080093A1ED /* GoogleService-Info.plist */; };
 		881B6E561EE52D2E000334C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B6E551EE52D2E000334C2 /* AppDelegate.swift */; };
 		881B6E581EE52D2E000334C2 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B6E571EE52D2E000334C2 /* loginView.swift */; };
@@ -48,7 +50,9 @@
 		5B1E58080F13210D948BD4F4 /* Pods-TourMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-TourMe/Pods-TourMe.release.xcconfig"; sourceTree = "<group>"; };
 		652CCC701EE781A70013C188 /* firstScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = firstScreen.swift; sourceTree = "<group>"; };
 		652CCC721EE783730013C188 /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
-		652CCC761EE7C50D0013C188 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		652CCC761EE7C50D0013C188 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		6532BFC81EE9ACD30077A0FD /* HomeScreenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenTableViewController.swift; sourceTree = "<group>"; };
+		6532BFCA1EE9B5F50077A0FD /* HeaderObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderObject.swift; sourceTree = "<group>"; };
 		657C78E91EE534080093A1ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		657C78EB1EE5FBE70093A1ED /* TourMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TourMe.entitlements; sourceTree = "<group>"; };
 		881B6E521EE52D2E000334C2 /* TourMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TourMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,10 +145,12 @@
 				881B6E551EE52D2E000334C2 /* AppDelegate.swift */,
 				881B6E571EE52D2E000334C2 /* loginView.swift */,
 				881B6E591EE52D2E000334C2 /* Main.storyboard */,
+				6532BFCA1EE9B5F50077A0FD /* HeaderObject.swift */,
 				88F5F4561EE88229002DFBFB /* ProfileViewController.swift */,
 				88F5F4541EE87AA9002DFBFB /* ChatTableViewController.swift */,
-				652CCC761EE7C50D0013C188 /* ProfileView.swift */,
+				652CCC761EE7C50D0013C188 /* HomeView.swift */,
 				652CCC721EE783730013C188 /* MainScreenViewController.swift */,
+				6532BFC81EE9ACD30077A0FD /* HomeScreenTableViewController.swift */,
 				652CCC701EE781A70013C188 /* firstScreen.swift */,
 				881B6E5C1EE52D2E000334C2 /* Assets.xcassets */,
 				881B6E5E1EE52D2E000334C2 /* LaunchScreen.storyboard */,
@@ -477,10 +483,12 @@
 			files = (
 				652CCC711EE781A70013C188 /* firstScreen.swift in Sources */,
 				652CCC731EE783730013C188 /* MainScreenViewController.swift in Sources */,
-				652CCC771EE7C50D0013C188 /* ProfileView.swift in Sources */,
+				652CCC771EE7C50D0013C188 /* HomeView.swift in Sources */,
 				881B6E581EE52D2E000334C2 /* loginView.swift in Sources */,
 				88F5F4571EE88229002DFBFB /* ProfileViewController.swift in Sources */,
 				881B6E561EE52D2E000334C2 /* AppDelegate.swift in Sources */,
+				6532BFCB1EE9B5F50077A0FD /* HeaderObject.swift in Sources */,
+				6532BFC91EE9ACD30077A0FD /* HomeScreenTableViewController.swift in Sources */,
 				88F5F4551EE87AA9002DFBFB /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

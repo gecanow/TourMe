@@ -8,47 +8,65 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UIScrollViewDelegate {
-    
-    @IBOutlet weak var myScrollView: UIScrollView!
+class ProfileViewController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var clubsView: UIView!
-    @IBOutlet weak var bioView: UIView!
+    @IBOutlet weak var profilePic: UIImageView!
     
-    @IBOutlet weak var bioLabel: UILabel!
+    @IBOutlet weak var clubsText: UITextView!
+    @IBOutlet weak var bioText: UITextView!
+    var myTexts = [UITextView]()
+    var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        myScrollView.delegate = self
-        updateScrollViewContent()
+        myTexts = [clubsText, bioText]
         
-        bioLabel.lineBreakMode = .byWordWrapping
+        clubsText.delegate = self
+        bioText.delegate = self
+        imagePicker.delegate = self
     }
     
-    @IBAction func onTappedBioEdit(_ sender: Any) {
-        //------------------------------------------
-        // FIRST, update the bio text
-        let updatedBio = "THIS IS A TEST hakjldhkjhdjkahfkjahdjfhajksdhfkjashdflahsdlfjhasldhfljkasdhfljsdhflkjasdhfkljashdflkjhaslkdjfhaksjdhflkajshdfjkashdfkjashdfkjsahfkjahsdfjkahsdlfkjhaslkjdfhkajsdfjkbcsdfhjkwebiudhakjsbdasdhkjasdnjagiudsnkwbegfgsodjakldnakhsdgsodalksjdnajwhegaofjalksdhajksdjhbsdamsndosdfhosudhajs"
-        
-        //------------------------------------------
-        // NEXT, update the bio view size
-        // FLT_MAX here simply means no constraint in height
-        bioLabel.text = updatedBio
-        bioLabel.sizeToFit()
-
-        bioView.sizeToFit()
-
-        
-        //------------------------------------------
-        // FINALLY, update the scroll view content
-        // size based on the size of the label
-        updateScrollViewContent()
-        
+    func textViewDidEndEditing(_ sender: UITextView) {
+        sender.isEditable = false
     }
     
-    func updateScrollViewContent() {
-        myScrollView.contentSize.height = mainView.frame.height + 5 + clubsView.frame.height + 5 + bioView.frame.height
+    @IBAction func onTappedPhotoEdit(_ sender: Any) {
+        let changePhotoAction = UIAlertController(title: "Change Profile Picture", message: "Select option.", preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (Void) in
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+                self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
+        }
+        
+        let libraryAction = UIAlertAction(title: "Library", style: .default) { (Void) in
+            self.imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        changePhotoAction.addAction(cameraAction)
+        changePhotoAction.addAction(libraryAction)
+        changePhotoAction.addAction(cancelAction)
+        
+        present(changePhotoAction, animated: true, completion: nil)
     }
     
+    @IBAction func onTappedEdit(_ sender: UIButton) {
+        myTexts[sender.tag].isEditable = true
+    }
+    
+    //==========================================
+    // Controls the image picker
+    //==========================================
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        imagePicker.dismiss(animated: true) {
+            let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            self.profilePic.image = selectedImage
+        }
+    }
 }

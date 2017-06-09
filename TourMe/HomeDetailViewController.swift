@@ -19,8 +19,6 @@ class HomeDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(college.collegeTitle, college.collegeSubtitle, college.collegeImageURL, college.collegeEditorial)
 
         if let checkedUrl = URL(string: college.collegeImageURL) {
             collegeImageView.contentMode = .scaleAspectFill

@@ -10,6 +10,7 @@ pod ‘Firebase/Core’
 pod ‘Firebase/Auth’
 pod ‘GoogleSignIn’
 pod ‘Firebase/Database’
+pod 'SCLAlertView'
 
   target 'TourMeTests' do
     inherit! :search_paths

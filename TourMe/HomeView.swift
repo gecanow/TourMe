@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ProfileView: UIViewController {
+class HomeView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,18 +25,7 @@ class ProfileView: UIViewController {
     
     @IBAction func logoutPressed(_ sender: Any) {
         
-        // [START signout]
-        let firebaseAuth = FIRAuth.auth()
-        do {
-            try firebaseAuth?.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-        
-        // get a reference to the app delegate
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.goToFirstScreen()
-        // [END signout]
+
         
     }
     /*

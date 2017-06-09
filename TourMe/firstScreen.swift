@@ -4,11 +4,24 @@ import Firebase
 import GoogleSignIn
 import FirebaseAuth
 
-class firstScreen: UIViewController {
+
+
+class firstScreen: UIViewController, GIDSignInUIDelegate {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        GIDSignIn.sharedInstance().uiDelegate = self
         
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        GIDSignIn.sharedInstance().signOut()
         
     }
     
@@ -27,13 +40,6 @@ class firstScreen: UIViewController {
 
     }
     
-    @IBAction func collegePRessed(_ sender: Any) {
-        UserDefaults.standard.set("College", forKey: "studentType")
-    }
-    
-    @IBAction func hsPressed(_ sender: Any) {
-        UserDefaults.standard.set("HS", forKey: "studentType")
-    }
     
 }
 

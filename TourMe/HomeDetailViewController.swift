@@ -19,11 +19,17 @@ class HomeDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(college.collegeTitle, college.collegeSubtitle, college.collegeImageURL, college.collegeEditorial)
 
         if let checkedUrl = URL(string: college.collegeImageURL) {
             collegeImageView.contentMode = .scaleAspectFill
             downloadImage(url: checkedUrl, imageView: collegeImageView)
         }
+        
+        collegeTitleLabel.text = college.collegeTitle
+        collegeSubtitleLabel.text = college.collegeSubtitle
+        collegeEditorialTextView.text = college.collegeEditorial
     }
 
     override func didReceiveMemoryWarning() {

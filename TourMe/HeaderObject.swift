@@ -11,16 +11,18 @@ import Foundation
 
 class HeaderObject
 {
-    var titleText: String = ""
-    var subtitleText: String = ""
-    var imageURL: String = ""
-    var college: String = ""
+    var id: String!
+    var collegeTitle: String = ""
+    var collegeSubtitle: String = ""
+    var collegeImageURL: String = ""
+    var collegeEditorial: String = ""
     
-    init(tT: String, sT: String, iURL: String, c: String)
+    init(id: String, collegeTitle: String, collegeSubtitle: String, collegeImageURL: String, collegeEditorial: String)
     {
-        titleText = tT
-        subtitleText = sT
-        imageURL = iURL
-        college = c
+        self.id = id
+        self.collegeTitle = collegeTitle
+        self.collegeSubtitle = collegeSubtitle
+        self.collegeImageURL = collegeImageURL
+        self.collegeEditorial = collegeEditorial
     }
 }

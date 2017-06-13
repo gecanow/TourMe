@@ -20,11 +20,13 @@ class FeatureTableViewCell: UITableViewCell {
 
 
 
-class HomeScreenTableViewController: UITableViewController {
+class HomeScreenTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
- //   var items = [HeaderObject]
-    var ref: DatabaseReference!
-    var recentPostQuery: DatabaseReference!
+    @IBOutlet var tableView: UITableView!
+    
+    var colleges = [HeaderObject]()
+    private var collegeRef: DatabaseReference = Database.database().reference().child("homeScreenFeatures")
+    private var collegeRefHandle: DatabaseHandle?
     var howManyDisplayed = 10
     
     //-------------------------------------------------------------
@@ -34,55 +36,107 @@ class HomeScreenTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        queryColleges()
     }
     
     //===============================//
     // TABLE VIEW DELEGATE FUNCTIONS //
     //===============================//
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //-------------------------------------------------------------
         // just return how many things are in the database
-        return allHeaders.count
+        return colleges.count
         //-------------------------------------------------------------
     }
     
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //-------------------------------------------------------------
         // Grab each cell displayed in the tableview
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! FeatureTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeatureTableViewCell
         //-------------------------------------------------------------
         
         //-------------------------------------------------------------
         // Customize the cell (at index indexPath.row)
-        cell.titleLabel.text = allHeaders[indexPath.row].titleText
-        cell.subtitleLabel.text = allHeaders[indexPath.row].subtitleText
-        //cell.backgroundImage = allHeaders[indexPath.row].imageURL
+        cell.titleLabel.text = colleges[indexPath.row].collegeTitle
+        cell.subtitleLabel.text = colleges[indexPath.row].collegeSubtitle
+        if let checkedUrl = URL(string: colleges[indexPath.row].collegeImageURL) {
+            cell.backgroundImage.contentMode = .scaleAspectFill
+            downloadImage(url: checkedUrl, imageView: cell.backgroundImage)
+        }
         //-------------------------------------------------------------
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //-------------------------------------------------------------
         // Grab the cell that was tapped on, in order to change it
         // however you want
-        _ = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! FeatureTableViewCell
+        _ = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeatureTableViewCell
         //-------------------------------------------------------------
         
         //-------------------------------------------------------------
         // Use the index to filter the next view controller,
         // and get whatever information you want from the chosen cell
-        _ = allHeaders[indexPath.row].college
+        //_ = allHeaders[indexPath.row].college
         //-------------------------------------------------------------
     }
- 
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+ 
+    //===============================//
+    // FIREBASE QUERYING //
+    //===============================//
+    
+    func queryColleges() {
+        collegeRefHandle = collegeRef.queryLimited(toFirst: 10).observe(.childAdded, with: { (snapshot) -> Void in
+            
+            let collegeData = snapshot.value as! Dictionary<String, AnyObject>
+            let id = snapshot.key
+            print(collegeData, id)
+            if let collegeTitle = collegeData["title"] as! String!, let collegeSubtitle = collegeData["Subtitle"] as! String!, let collegeImageURL = collegeData["photoURL"] as! String!, let collegeEditorial = collegeData["editorial"] as! String! {
+                print("Appending colleges")
+                self.colleges.append(HeaderObject(id: id, collegeTitle: collegeTitle, collegeSubtitle: collegeSubtitle, collegeImageURL: collegeImageURL, collegeEditorial: collegeEditorial))
+                self.tableView.reloadData()
+            } else {
+                print("Could not decode data.")
+            }
+            
+        })
+    }
     
 
+    //===============================//
+    // DOWNLOAD IMAGE ASNYCHRONOUSLY //
+    //===============================//
     
+    func getDataFromUrl(url: URL, completion: @escaping (_ data: Data?, _  response: URLResponse?, _ error: Error?) -> Void) {
+        URLSession.shared.dataTask(with: url) {
+            (data, response, error) in
+            completion(data, response, error)
+            }.resume()
+    }
+    
+    func downloadImage(url: URL, imageView: UIImageView) {
+        print("Download Started")
+        getDataFromUrl(url: url) { (data, response, error)  in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() { () -> Void in
+                imageView.image = UIImage(data: data)
+            }
+        }
+    }
 
     
 }

@@ -15,11 +15,11 @@ class loginView: UIViewController, GIDSignInUIDelegate {
 
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var topLabel: UILabel!
-    @IBOutlet weak var enterUni: UITextField!
     var ref: DatabaseReference!
     
     
     
+    @IBOutlet weak var button: UIButton!
     var email: String = ""
     var containsEDU = false
     
@@ -45,13 +45,16 @@ class loginView: UIViewController, GIDSignInUIDelegate {
         
         if(self.containsEDU == true)
         {
-            label1.text = "I see you have a .EDU email, and are a COLLEGE STUDENT. Please enter your University name:"
-            enterUni.isHidden = false
+            label1.text = "I see you have a .EDU email, and are a COLLEGE STUDENT."
+            
+            button.title("Continue as a tour guide", for: .normal)
+            
         }
         else
         {
             label1.text = "I see you are a HIGH SCHOOLER. Ready to find tours?"
-            enterUni.isHidden = true
+            
+            button.title("Continue as a tourer", for: .normal)
         }
         
         
@@ -60,19 +63,9 @@ class loginView: UIViewController, GIDSignInUIDelegate {
     @IBAction func continuePressed(_ sender: Any) {
         if(self.containsEDU == true)
         {
-            if(self.enterUni.text != "")
-            {
-                self.ref.child("users").child((Auth.auth().currentUser?.uid)!).setValue(["inCollege": "true"])
-                
-                // get a reference to the app delegate
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.goToMainScreen()
-            }
-            else
-            {
-                //do nothing
-                //alert
-            }
+            
+            self.ref.child("users").child((Auth.auth().currentUser?.uid)!).setValue(["inCollege": "true"])
+            
         }
         else{
             self.ref.child("users").child((Auth.auth().currentUser?.uid)!).setValue(["inCollege": "false"])

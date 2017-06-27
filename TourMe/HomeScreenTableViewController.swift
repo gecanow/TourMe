@@ -75,19 +75,15 @@ class HomeScreenTableViewController: UIViewController, UITableViewDataSource, UI
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //-------------------------------------------------------------
         // Grab the cell that was tapped on, in order to change it
         // however you want
-        _ = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeatureTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeatureTableViewCell
         //-------------------------------------------------------------
         
-        //-------------------------------------------------------------
-        // Use the index to filter the next view controller,
-        // and get whatever information you want from the chosen cell
-        //_ = allHeaders[indexPath.row].college
-        //-------------------------------------------------------------
-    }
+        let currentCollege = colleges[indexPath.row]
+    }*/
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
@@ -137,6 +133,18 @@ class HomeScreenTableViewController: UIViewController, UITableViewDataSource, UI
             }
         }
     }
+    
+    //===============================//
+    // NAVIGATION //
+    //===============================//
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCollegeDetail" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let destinationViewController = segue.destination as! HomeDetailViewController
+                destinationViewController.college = colleges[indexPath.row]
+            }
+        }
+    }
     
 }

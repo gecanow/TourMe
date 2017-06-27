@@ -24,6 +24,10 @@ class HomeDetailViewController: UIViewController {
             collegeImageView.contentMode = .scaleAspectFill
             downloadImage(url: checkedUrl, imageView: collegeImageView)
         }
+        
+        collegeTitleLabel.text = college.collegeTitle
+        collegeSubtitleLabel.text = college.collegeSubtitle
+        collegeEditorialTextView.text = college.collegeEditorial
     }
 
     override func didReceiveMemoryWarning() {

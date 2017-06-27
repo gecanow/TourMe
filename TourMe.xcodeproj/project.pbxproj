@@ -10,6 +10,7 @@
 		1539289025E670345139531D /* Pods_TourMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CF2DDD0CF597A069260A755 /* Pods_TourMeTests.framework */; };
 		28E76649877DFCF9BD13418A /* Pods_TourMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4954194283E7328D4C65693 /* Pods_TourMe.framework */; };
 		61E4470323FC4C05936FE8BF /* Pods_TourMeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091D880B67F47A2B8573650B /* Pods_TourMeUITests.framework */; };
+		650BBE771EEB1EA70045E56B /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650BBE761EEB1EA70045E56B /* HomeDetailViewController.swift */; };
 		652CCC711EE781A70013C188 /* firstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652CCC701EE781A70013C188 /* firstScreen.swift */; };
 		652CCC731EE783730013C188 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652CCC721EE783730013C188 /* MainScreenViewController.swift */; };
 		652CCC771EE7C50D0013C188 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652CCC761EE7C50D0013C188 /* HomeView.swift */; };
@@ -48,6 +49,7 @@
 		091D880B67F47A2B8573650B /* Pods_TourMeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourMeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CF2DDD0CF597A069260A755 /* Pods_TourMeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourMeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1E58080F13210D948BD4F4 /* Pods-TourMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-TourMe/Pods-TourMe.release.xcconfig"; sourceTree = "<group>"; };
+		650BBE761EEB1EA70045E56B /* HomeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
 		652CCC701EE781A70013C188 /* firstScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = firstScreen.swift; sourceTree = "<group>"; };
 		652CCC721EE783730013C188 /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		652CCC761EE7C50D0013C188 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				652CCC721EE783730013C188 /* MainScreenViewController.swift */,
 				6532BFC81EE9ACD30077A0FD /* HomeScreenTableViewController.swift */,
 				652CCC701EE781A70013C188 /* firstScreen.swift */,
+				650BBE761EEB1EA70045E56B /* HomeDetailViewController.swift */,
 				881B6E5C1EE52D2E000334C2 /* Assets.xcassets */,
 				881B6E5E1EE52D2E000334C2 /* LaunchScreen.storyboard */,
 				881B6E611EE52D2E000334C2 /* Info.plist */,
@@ -481,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				650BBE771EEB1EA70045E56B /* HomeDetailViewController.swift in Sources */,
 				652CCC711EE781A70013C188 /* firstScreen.swift in Sources */,
 				652CCC731EE783730013C188 /* MainScreenViewController.swift in Sources */,
 				652CCC771EE7C50D0013C188 /* HomeView.swift in Sources */,
